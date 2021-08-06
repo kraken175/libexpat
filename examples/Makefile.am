@@ -31,10 +31,13 @@
 
 AM_CPPFLAGS = @AM_CPPFLAGS@ -I$(srcdir)/../lib
 
-noinst_PROGRAMS = elements outline
+noinst_PROGRAMS = elements outline parse_xml
 
 elements_SOURCES = elements.c
 elements_LDADD = ../lib/libexpat.la
 
 outline_SOURCES = outline.c
 outline_LDADD = ../lib/libexpat.la
+
+krak175_parsexml_SOURCES = parse_xml.c
+krak175_parsexml_LDADD = ../lib/libexpat.la
