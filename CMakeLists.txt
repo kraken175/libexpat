@@ -114,9 +114,10 @@ string(TOUPPER "${CMAKE_BUILD_TYPE}" _EXPAT_BUILD_TYPE_UPPER)
 #
 # Configuration
 #
+
 option(EXPAT_BUILD_TOOLS "build the xmlwf tool for expat library" ${_EXPAT_BUILD_TOOLS_DEFAULT})
-option(EXPAT_BUILD_EXAMPLES "build the examples for expat library" ON)
-option(EXPAT_BUILD_TESTS "build the tests for expat library" ON)
+option(EXPAT_BUILD_EXAMPLES "build the examples for expat library" ON) # includes Kraken175's Expat Sample
+option(EXPAT_BUILD_TESTS "build the tests for expat library" OFF)
 option(EXPAT_SHARED_LIBS "build a shared expat library" ${_EXPAT_SHARED_LIBS_DEFAULT})
 option(EXPAT_BUILD_DOCS "build man page for xmlwf" ${_EXPAT_BUILD_DOCS_DEFAULT})
 option(EXPAT_BUILD_FUZZERS "build fuzzers for the expat library" OFF)
@@ -503,6 +504,11 @@ if(EXPAT_BUILD_EXAMPLES)
     add_executable(outline examples/outline.c)
     set_property(TARGET outline PROPERTY RUNTIME_OUTPUT_DIRECTORY examples)
     target_link_libraries(outline expat)
+    
+    # Includes Kraken175 Expat Example
+    add_executable(outline examples/parse_xml.c)
+    set_property(TARGET outline PROPERTY RUNTIME_OUTPUT_DIRECTORY examples)
+    target_link_libraries(parse_xml expat)
 endif()
 
 #
